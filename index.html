@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Student Assistant Chatbot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Assistant Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+    }
+
+    .header {
+      background: #2e7d32;
+      color: white;
+      padding: 18px 24px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .content h2 {
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    df-messenger {
+      --df-messenger-bot-message: #e3f2fd;
+      --df-messenger-button-titlebar-color: #2e7d32;
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-font-color: #000000;
+      --df-messenger-send-icon: #2e7d32;
+      --df-messenger-user-message: #c8e6c9;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="header">Student Assistant Chatbot</div>
 
-<h2>Student Assistant Chatbot</h2>
+  <div class="content">
+    <h2>Welcome to Student Assistant Chatbot</h2>
+    <p>Click the chat icon at the bottom right and type hi.</p>
+  </div>
 
-<iframe
-    width="350"
-    height="500"
-    allow="microphone;"
-    src=<iframe height="430" width="350" src="https://bot.dialogflow.com/361ba8e3-2e84-48dd-aefb-e4a35a357010"></iframe>
-</iframe>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
+  <df-messenger
+    intent="WELCOME"
+    chat-title="StudentAssistantBot"
+    agent-id="361ba8e3-2e84-48dd-aefb-e4a35a357010"
+    language-code="en">
+  </df-messenger>
 </body>
 </html>
