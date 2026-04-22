@@ -1,65 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Assistant Chatbot</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Student Assistant</title>
 
-    .header {
-      background: #2e7d32;
-      color: white;
-      padding: 18px 24px;
-      font-size: 28px;
-      font-weight: bold;
-      text-align: center;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    .content {
-      padding: 40px 20px;
-      text-align: center;
-    }
+body {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #0f172a);
+  color: white;
+  overflow-x: hidden;
+}
 
-    .content h2 {
-      color: #222;
-      margin-bottom: 10px;
-    }
+/* HEADER */
+.header {
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(99,102,241,0.6);
+}
 
-    .content p {
-      color: #555;
-      font-size: 18px;
-    }
+/* CONTENT */
+.content {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    df-messenger {
-      --df-messenger-bot-message: #e3f2fd;
-      --df-messenger-button-titlebar-color: #2e7d32;
-      --df-messenger-chat-background-color: #ffffff;
-      --df-messenger-font-color: #000000;
-      --df-messenger-send-icon: #2e7d32;
-      --df-messenger-user-message: #c8e6c9;
-    }
-  </style>
+.content h2 {
+  font-size: 32px;
+  background: linear-gradient(90deg,#8b5cf6,#22d3ee,#ec4899);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.content p {
+  margin-top: 10px;
+  color: #cbd5f5;
+  font-size: 18px;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(90deg,#6366f1,#22d3ee);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 0 15px rgba(99,102,241,0.6);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(99,102,241,1);
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  width: 200px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(99,102,241,0.6);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #94a3b8;
+}
+
+/* CHATBOT STYLING */
+df-messenger {
+  --df-messenger-bot-message: #1e293b;
+  --df-messenger-button-titlebar-color: #6366f1;
+  --df-messenger-chat-background-color: #0f172a;
+  --df-messenger-font-color: white;
+  --df-messenger-user-message: #22d3ee;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+</style>
 </head>
+
 <body>
-  <div class="header">Student Assistant Chatbot</div>
 
-  <div class="content">
-    <h2>Welcome to Student Assistant Chatbot</h2>
-    <p>Click the chat icon at the bottom right and type hi.</p>
-  </div>
+<div class="header">🤖 AI Student Assistant</div>
 
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<div class="content">
+  <h2>Welcome to Smart Student Assistant</h2>
+  <p>Ask about attendance, fees, marks, timetable and more</p>
 
-  <df-messenger
-    intent="WELCOME"
-    chat-title="StudentAssistantBot"
-    agent-id="361ba8e3-2e84-48dd-aefb-e4a35a357010"
-    language-code="en">
-  </df-messenger>
+  <button class="btn" onclick="openChat()">💬 Start Chat</button>
+</div>
+
+<!-- FEATURE CARDS -->
+<div class="cards">
+  <div class="card" onclick="sendMessage('attendance')">📊 Attendance</div>
+  <div class="card" onclick="sendMessage('fees')">💰 Fees</div>
+  <div class="card" onclick="sendMessage('subjects')">📚 Subjects</div>
+  <div class="card" onclick="sendMessage('exam')">📝 Exams</div>
+  <div class="card" onclick="sendMessage('timetable')">📅 Timetable</div>
+  <div class="card" onclick="sendMessage('marks')">🎯 Marks</div>
+  <div class="card" onclick="sendMessage('help')">🙋 Help</div>
+  <div class="card" onclick="sendMessage('thanks')">🙏 Thanks</div>
+</div>
+
+<div class="footer">
+  🚀 AI Project using Dialogflow ✨
+</div>
+
+<!-- DIALOGFLOW -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+<df-messenger
+  intent="WELCOME"
+  chat-title="AI Student Assistant 🤖"
+  agent-id="361ba8e3-2e84-48dd-aefb-e4a35a357010"
+  language-code="en">
+</df-messenger>
+
+<script>
+function openChat() {
+  const dfMessenger = document.querySelector("df-messenger");
+  const shadowRoot = dfMessenger.shadowRoot;
+  const button = shadowRoot.querySelector("df-messenger-chat").shadowRoot.querySelector("button");
+  button.click();
+}
+
+function sendMessage(message) {
+  const dfMessenger = document.querySelector("df-messenger");
+  const shadowRoot = dfMessenger.shadowRoot;
+  const chat = shadowRoot.querySelector("df-messenger-chat").shadowRoot;
+
+  chat.querySelector("button").click();
+
+  setTimeout(() => {
+    const input = chat.querySelector("input");
+    input.value = message;
+
+    const event = new KeyboardEvent("keydown", {
+      bubbles: true,
+      cancelable: true,
+      keyCode: 13
+    });
+
+    input.dispatchEvent(event);
+  }, 1000);
+}
+</script>
+
 </body>
 </html>
