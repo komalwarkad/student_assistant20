@@ -1,148 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Student Assistant</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Assistant Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+    }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    .header {
+      background: #2e7d32;
+      color: white;
+      padding: 18px 24px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
 
-/* BACKGROUND */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1a1f3c, #0a0f1f);
-    color: #e2e8f0;
-}
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-/* HEADER */
-header {
-    text-align: center;
-    padding: 80px 20px 40px;
-}
+    .content h2 {
+      color: #222;
+      margin-bottom: 10px;
+    }
 
-header h1 {
-    font-size: 45px;
-    background: linear-gradient(90deg, #8b5cf6, #22d3ee, #ec4899);
-    -webkit-background-clip: text;
-    color: transparent;
-}
+    .content p {
+      color: #555;
+      font-size: 18px;
+    }
 
-header p {
-    margin-top: 15px;
-    color: #94a3b8;
-    font-size: 18px;
-}
-
-/* BUTTON */
-.start-btn {
-    margin-top: 25px;
-    padding: 12px 25px;
-    border-radius: 30px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #6366f1, #22d3ee);
-    color: white;
-    transition: 0.3s;
-}
-
-.start-btn:hover {
-    transform: scale(1.05);
-}
-
-/* SECTION */
-section {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 30px;
-}
-
-/* CARDS */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-.card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 25px;
-    border-radius: 18px;
-    width: 260px;
-    transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border: 1px solid rgba(99,102,241,0.4);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #64748b;
-}
-</style>
+    df-messenger {
+      --df-messenger-bot-message: #e3f2fd;
+      --df-messenger-button-titlebar-color: #2e7d32;
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-font-color: #000000;
+      --df-messenger-send-icon: #2e7d32;
+      --df-messenger-user-message: #c8e6c9;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="header">Student Assistant Chatbot</div>
 
-<header>
-    <h1>🤖 AI Student Assistant</h1>
-    <p>Your smart companion for academic queries and student management</p>
-    <button class="start-btn">💬 Start Chat</button>
-</header>
+  <div class="content">
+    <h2>Welcome to Student Assistant Chatbot</h2>
+    <p>Click the chat icon at the bottom right and type hi.</p>
+  </div>
 
-<section>
-    <h2>✨ Features</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>💬 Smart Chat</h3>
-            <p>AI-powered responses to your queries instantly.</p>
-        </div>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
-        <div class="card">
-            <h3>📊 Student Data</h3>
-            <p>Access attendance, marks, and fees easily.</p>
-        </div>
-
-        <div class="card">
-            <h3>⚡ Fast</h3>
-            <p>Quick and accurate responses in real time.</p>
-        </div>
-
-        <div class="card">
-            <h3>📱 Simple UI</h3>
-            <p>Clean and user-friendly interface.</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>AI Project using Dialogflow</p>
-</footer>
-
-<!-- ✅ FINAL CHATBOT (CORRECT) -->
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-
-<df-messenger
-  intent="WELCOME"
-  chat-title="Student Assistant 🤖"
-  agent-id="studentassistantbot-j9ky"
-  language-code="en">
-</df-messenger>
-
+  <df-messenger
+    intent="WELCOME"
+    chat-title="StudentAssistantBot"
+    agent-id="361ba8e3-2e84-48dd-aefb-e4a35a357010"
+    language-code="en">
+  </df-messenger>
 </body>
 </html>
